@@ -15,7 +15,7 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 COPY pyproject.toml uv.lock ./
 
 # Install dependencies only (not the app itself)
-RUN uv pip install --system -r pyproject.toml
+RUN uv sync --frozen
 
 # Copy application
 COPY . .
@@ -26,5 +26,5 @@ RUN rm -f token.json
 # Expose ports: 8766 for web UI, 8767 for OAuth callback
 EXPOSE 8766 8767
 
-# Run the app
-CMD ["python", "main.py"]
+# Run with uvicorn (FastAPI)
+CMD ["uv", "run", "python", "main.py"]
