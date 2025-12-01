@@ -71,13 +71,19 @@ Put your `credentials.json` file in the project folder.
 
 ### Option A: Docker (Recommended)
 
+**Step 1:** Start the container
 ```bash
 docker compose up -d
 ```
 
-Open http://localhost:8766 in your browser.
+**Step 2:** Open the app in your browser
+```
+http://localhost:8766
+```
 
-**First-time sign-in:** Click "Sign In" in the web UI, then check logs for the OAuth URL:
+**Step 3:** Click **"Sign In"** button in the web UI
+
+**Step 4:** Check logs for the OAuth URL (only after clicking Sign In!)
 ```bash
 docker logs $(docker ps -q --filter ancestor=ghcr.io/gururagavendra/gmail-cleaner)
 ```
@@ -86,7 +92,7 @@ Or if you built locally:
 docker logs $(docker ps -q --filter name=gmail-cleaner)
 ```
 
-Copy the URL from logs, open in browser, and authorize.
+**Step 5:** Copy the Google OAuth URL from logs, open in browser, and authorize
 
 > ⚠️ You'll see "Google hasn't verified this app" - this is normal! Click **Advanced** → **Go to Gmail Cleanup (unsafe)** to continue.
 
